@@ -141,7 +141,7 @@ class Net_2(nn.Module):
         # Create 256 output channels
         self.fc2 = nn.Linear(512, 256)
         
-        # dropout with p=0.5
+        # dropout with p=0.4
         self.fc2_drop = nn.Dropout(p=0.4)
         
         # finally, create 136 output channels
@@ -169,9 +169,9 @@ class Net_2(nn.Module):
         
         # two linear layers with dropout in between
         x = F.relu(self.fc1(x))
-        #x = self.fc1_drop(x)
+        x = self.fc1_drop(x)
         x = F.relu(self.fc2(x))
-        #x = self.fc2_drop(x)
+        x = self.fc2_drop(x)
         x = self.fc3(x)
         
         # a modified x, having gone through all the layers of your model, should be returned
